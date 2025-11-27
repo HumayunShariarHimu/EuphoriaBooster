@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Natural Euphoria Booster</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMD/CDt+c4Hq8w6mR6e54O/C5vR9F1N9S0e4G85w5WpL5uF1D0v1R2i8v7o" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* VARIABLES: Simplified Permanent Dark Mode Palette */
+    :root{
+      --bg: #111827; /* Deep Dark Background (Slate/Gray-900) */
+      --card: #1f2937; /* Slightly Lighter Card Background (Gray-800) */
+      --primary: #60a5fa; /* Modern Blue for Primary Actions */
+      --primary-hover: #3b82f6;
+      --secondary: #9ca3af; /* Muted Secondary */
+      --text-main: #f9fafb; /* Light Text */
+      --text-muted: #9ca3af; /* Muted Light Text */
+      --border: #374151; /* Dark Border Color */
+      --glass: rgba(255, 255, 255, 0.08); /* Subtle Glass Effect */
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.6); /* Prominent Shadow for Depth */
+      --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.9);
+    }
+
+    /* BASE STYLES */
+    *{box-sizing:border-box}
+    body{
+      font-family: 'Hind Siliguri', sans-serif;
+      margin:0;
+      background:var(--bg);
+      color: var(--text-main);
+      transition:background .3s, color .3s;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:center; /* Centered title in permanent dark mode */
+      padding:16px 20px;
+      /* Subtle gradient in the dark mode theme */
+      background:linear-gradient(135deg, var(--card), var(--bg)); 
+      color:var(--text-main);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    header h1{font-size:26px;margin:0;font-weight:700; color:var(--primary)}
+    .container{max-width:1100px;margin:30px auto;padding:0 20px}
+
+    /* CONTROLS & INPUTS */
+    .controls{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:25px}
+    input[type=text], select, input[type=number]{
+      width:100%;
+      padding:12px;
+      border-radius:8px;
+      border:1px solid var(--border);
+      background:var(--card);
+      color:var(--text-main);
+      transition:border-color .3s;
+    }
+    input:focus, select:focus{border-color:var(--primary); outline:none;}
+    select { /* Style for select dropdown in dark mode */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="%239ca3af"><path d="M7 10l5 5 5-5z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 10px top 50%;
+        padding-right: 30px;
+    }
+
+
+    /* BUTTONS */
+    .btn, .pill{
+      padding:12px 18px;
+      border-radius:8px;
+      border:none;
+      cursor:pointer;
+      transition:background-color .3s, transform .1s, box-shadow .3s;
+      font-weight:600;
+      font-size: 15px;
+    }
+    .btn{
+      background:var(--primary);
+      color:var(--bg); /* Dark text on bright button */
+      box-shadow: 0 4px 10px rgba(96, 165, 250, 0.3);
+    }
+    .btn:hover{background:var(--primary-hover); transform: translateY(-1px);}
+    .pill{
+      background:var(--glass);
+      color:var(--text-main);
+      border:1px solid var(--border);
+    }
+    .pill:hover{background:rgba(255,255,255,0.15); border-color:var(--primary);}
+
+
+    /* CARD GRID */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+    .card{
+      background:var(--card);
+      padding:20px;
+      border-radius:12px;
+      box-shadow:var(--shadow);
+      border: 1px solid var(--border); /* Added subtle border */
+      transition:transform .3s, box-shadow .3s, border-color .3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover{transform:translateY(-8px);box-shadow:var(--shadow-hover); border-color: var(--primary);}
+
+    /* CARD ELEMENTS */
+    .badge{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:4px;
+      background:var(--primary);
+      color:var(--bg); /* Dark text on bright badge */
+      font-size:12px;
+      font-weight:700;
+      margin-bottom:10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .title{font-weight:700;font-size:22px;margin:8px 0; color: var(--primary)}
+    .desc{color:var(--text-muted);font-size:15px; margin-bottom: 15px; flex-grow: 1;}
+    .hormone-impact{
+      font-size: 13px;
+      color: var(--primary);
+      font-weight: 500;
+      margin-bottom: 10px;
+      padding: 8px 0;
+      border-top: 1px solid var(--border); 
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+    }
+    .hormone-impact i{margin-right: 8px; color: var(--secondary);}
+    .action-row{display:flex;gap:10px;margin-top:10px}
+
+    /* GUIDE SECTION & TIMER SECTION STYLING */
+    .guide, .timer-section {
+        margin-top:40px; 
+        padding:25px; 
+        background:var(--card); 
+        border-radius:12px; 
+        box-shadow:var(--shadow);
+        border: 1px solid var(--border);
+    }
+    .guide h2{color:var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 8px; margin-bottom: 20px;}
+    .guide-item{margin-bottom: 15px;}
+    .guide-item h4{margin: 0; font-weight: 600; color: var(--text-main); display: flex; align-items: center;}
+    .guide-item h4 i{margin-right: 8px; color: var(--primary);}
+    .guide ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    .guide li {
+        margin-bottom: 8px;
+        position: relative;
+        padding-left: 1.5em;
+        color: var(--text-muted);
+    }
+    .guide li::before {
+        content: '\2022'; /* Bullet point */
+        color: var(--primary);
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+
+    /* TIMER SPECIFIC */
+    .timer-section h3 {
+        color: var(--primary);
+        margin-top: 0;
+    }
+    .timer-controls {
+        display:flex;
+        gap:10px;
+        align-items:center;
+    }
+    #timerLabel {
+        margin-left:15px;
+        font-size:28px;
+        font-weight:700;
+        color:var(--primary);
+        min-width: 90px;
+    }
+
+
+    /* FOOTER */
+    footer{
+      max-width:1100px;
+      margin:40px auto 20px;
+      text-align:center;
+      color:var(--text-muted);
+      font-size:14px;
+      padding: 20px 20px 10px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width:768px){
+      header h1{font-size:22px; text-align: center;}
+      .controls{flex-direction:column; gap:10px;}
+      .search, .controls > div{width:100% !important; min-width: unset !important;}
+      .grid{grid-template-columns:1fr}
+      .container{padding: 0 15px;}
+      .timer-controls {
+          flex-wrap: wrap;
+      }
+    }
+
+    /* UTILITIES */
+    .pulse{animation:pulse 2s infinite}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(96, 165, 250, 0.4)}70%{box-shadow:0 0 0 10px rgba(96, 165, 250, 0)}100%{box-shadow:0 0 0 0 rgba(96, 165, 250, 0)}}
+  </style>
+</head>
+<body>
+	<center>
+  <header>
+    <h1><i class="fas fa-brain"></i> Natural Euphoria Booster</h1>
+    </header>
+
+  <main class="container">
+    <section class="controls">
+      <div style="flex:1;min-width:250px" class="search">
+        <input id="searchInput" type="text" placeholder="অনুসন্ধান: ব্যায়াম, মিউজিক, ভিটামিন..." />
+      </div>
+      <div style="width:200px">
+        <select id="categorySelect">
+          <option value="all">সব বিষয় (All)</option>
+          <option value="exercise">ব্যায়াম</option>
+          <option value="food">খাদ্য</option>
+          <option value="mind">মানসিক/মেডিটেশন</option>
+          <option value="social">সামাজিক</option>
+          <option value="supplements">সাপ্লিমেন্ট</option>
+        </select>
+      </div>
+      <div style="min-width:150px">
+        <button id="shuffleBtn" class="btn pulse"><i class="fas fa-dice"></i> র‍্যান্ডম পিক</button>
+      </div>
+      <div style="min-width:140px">
+        <button id="downloadJSON" class="pill"><i class="fas fa-download"></i> ডেটা ডাউনলোড</button>
+      </div>
+    </section>
+
+    <section>
+      <div class="grid" id="cardsGrid"></div>
+    </section>
+
+    <section class="guide">
+      <h2><i class="fas fa-info-circle"></i> মুড বুস্টার গাইডলাইন</h2>
+      <div class="guide-item">
+        <h4><i class="fas fa-magic"></i> D.O.S.E. হরমোন কি?</h4>
+        <p>ডোপামিন, অক্সিটোসিন, সেরোটোনিন ও এন্ডোরফিন — এই চারটি নিউরোট্রান্সমিটার আমাদের মানসিক সুখ, আনন্দ এবং সুস্থতা নিয়ন্ত্রণ করে। এই অ্যাপের বুস্টারগুলো এই হরমোনগুলোর প্রাকৃতিক নিঃসরণে সাহায্য করে।</p>
+      </div>
+      <div class="guide-item">
+        <h4><i class="fas fa-check-circle"></i> ব্যবহারের নির্দেশিকা</h4>
+        <ul>
+          <li>**নিয়মিত অভ্যাস:** দৈনিক রুটিনে অন্তত একটি করে বুস্টার যোগ করুন। ধারাবাহিকতাই আসল ফল দেবে।</li>
+          <li>**র‍্যান্ডম পিক:** যখন সিদ্ধান্তহীনতায় ভুগবেন, তখন 'র‍্যান্ডম পিক' ব্যবহার করে একটি নতুন কাজ বেছে নিন।</li>
+          <li>**স্বাস্থ্যের পরামর্শ:** সাপ্লিমেন্ট গ্রহণের আগে অবশ্যই ডাক্তারের পরামর্শ নিন।</li>
+        </ul>
+      </div>
+    </section>
+    
+    <section class="timer-section">
+      <h3><i class="fas fa-clock"></i> অ্যাকশন টাইমার (কমপক্ষে ১০ মিনিট) </h3>
+      <p style="color:var(--text-muted); margin-top: -10px;">বিশেষ করে ব্যায়াম বা মেডিটেশনের জন্য সময় ট্র্যাক করতে ব্যবহার করুন।</p>
+      <div class="timer-controls">
+        <input id="minutesInput" type="number" value="10" min="1" max="60" style="width:100px;padding:10px;" />
+        <button id="startTimer" class="btn"><i class="fas fa-play"></i> শুরু করুন</button>
+        <button id="stopTimer" class="pill"><i class="fas fa-stop"></i> থামান</button>
+        <div id="timerLabel">10:00</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Created with <i class="fas fa-heart" style="color:#ef4444"></i>Humayun Shariar Himu </p>
+  </footer>
+
+  <script>
+    // DATA: Added D.O.S.E. impact details
+    const data = [
+      { id:1, category:'exercise', title:'রানিং/জগিং', desc:'৩০ মিনিট দ্রুত হাঁটা বা জগিং — শারীরিক শক্তি বৃদ্ধি ও মানসিক চাপ কমায়।', dose:'Endorphin, Serotonin' },
+      { id:2, category:'exercise', title:'পাওয়ার ইয়োগা', desc:'৩০ মিনিটের শক্তিশালী ইয়োগা সেশন — শারীরিক ও মানসিক ভারসাম্য আনে।', dose:'GABA, Serotonin' },
+      { id:3, category:'food', title:'ডার্ক চকলেট (৭৫%+) ', desc:'১-২ স্কোয়ার ডার্ক চকলেট — মন ভালো করে, মনোযোগ ও স্মৃতিশক্তি বাড়ায়।', dose:'Dopamine, Serotonin' },
+      { id:4, category:'mind', title:'ডিপ ব্রিদিং (4-7-8)', desc:'৫ মিনিট কন্ট্রোলড ব্রিদিং প্যাটার্ন — তাত্ক্ষণিক উদ্বেগ হ্রাস ও ফোকাস।', dose:'Serotonin, GABA' },
+      { id:5, category:'mind', title:'মাইন্ডফুলনেস মেডিটেশন', desc:'১০ মিনিট বর্তমানে মনোযোগ — মানসিক শান্তি ও স্থিরতা বাড়ায়।', dose:'Serotonin, Dopamine' },
+      { id:6, category:'social', title:'হাসি ও কমেডি', desc:'একটি মজার ভিডিও বা সামাজিক মজা — মন খুলে হাসা।', dose:'Endorphin, Oxytocin' },
+      { id:7, category:'food', title:'কফি (ক্যাফেইন)', desc:'মাঝারি পরিমাণ কফি — মনোযোগ, সতর্কতা ও এনার্জি বাড়ায়।', dose:'Dopamine' },
+      { id:8, category:'food', title:'ঝাল খাবার (Spicy)', desc:'ঝাল খাবার (Capsaicin) — শরীরের প্রাকৃতিক পেইনকিলার নিঃসরণ।', dose:'Endorphin' },
+      { id:9, category:'supplements', title:'Omega‑3 ফিশ অয়েল', desc:'ডেইলি Omega‑3 (ডাক্তারের পরামর্শ অনুযায়ী) — মুড স্ট্যাবিলাইজ করে।', dose:'Serotonin, Dopamine' },
+      { id:10, category:'social', title:'আলিঙ্গন / সামাজিক সংযোগ', desc:'বন্ধু/পরিবারের সাথে কোয়ালিটি সময় — সংযোগ ও আপনজনতা অনুভব।', dose:'Oxytocin' },
+      { id:11, category:'supplements', title:'Vitamin D (রোদ)', desc:'সঠিক মাত্রার Vitamin D — ভাল মুড ও রোগ প্রতিরোধ ক্ষমতা বজায় রাখে।', dose:'Serotonin' },
+      { id:12, category:'mind', title:'মিউজিক থেরাপি', desc:'প্রিয় Instrumental/Ambient মিউজিক শুনুন — ডোপামিন রিলিজ ও আনন্দ বৃদ্ধি।', dose:'Dopamine, Endorphin' },
+      { id:13, category:'exercise', title:'ড্যান্সিং (নাচ)', desc:'১০ মিনিট পছন্দের গানের সাথে নাচ — এনার্জি রিলিজ ও আনন্দ।', dose:'Endorphin, Dopamine' },
+      { id:14, category:'social', title:'পোষা প্রাণীর সাথে খেলা', desc:'১০-১৫ মিনিট পোষা প্রাণীকে আদর করা/খেলা — শান্ত ও আরামদায়ক অনুভব।', dose:'Oxytocin' },
+    ];
+
+    // DOM Elements
+    const grid = document.getElementById('cardsGrid');
+    const searchInput = document.getElementById('searchInput');
+    const categorySelect = document.getElementById('categorySelect');
+    const shuffleBtn = document.getElementById('shuffleBtn');
+    const downloadJSON = document.getElementById('downloadJSON');
+
+    // Render Function
+    function renderItems(list){
+      grid.innerHTML = '';
+      if (list.length === 0) {
+        grid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); font-size: 1.2em; padding: 30px;">কোনো আইটেম খুঁজে পাওয়া যায়নি। আপনার অনুসন্ধান পরিবর্তন করুন।</p>`;
+        return;
+      }
+      list.forEach(it => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `
+          <div class="badge">${it.category}</div>
+          <div class="title">${it.title}</div>
+          <div class="hormone-impact"><i class="fas fa-hand-holding-heart"></i> হরমোন প্রভাব: ${it.dose}</div>
+          <div class="desc">${it.desc}</div>
+          <div class="action-row">
+            <button class="btn" style="flex:1" onclick="startMini(${it.id})"><i class="fas fa-bolt"></i> স্টার্ট অ্যাকশন</button>
+            <button class="pill" onclick='copyText(${JSON.stringify(it.title + " - " + it.desc)})'><i class="fas fa-copy"></i> কপি</button>
+          </div>
+        `;
+        grid.appendChild(div);
+      });
+    }
+
+    // Helper Functions
+    function copyText(text){
+      navigator.clipboard.writeText(text).then(()=>{
+        alert('কপি করা হয়েছে: ' + text.substring(0, 40) + '...');
+      });
+    }
+
+    function startMini(id){
+      const item = data.find(d => d.id === id);
+      if(!item) return alert('আইটেম পাওয়া যায় নি');
+      const time = (item.category === 'exercise' || item.category === 'mind') ? '১০-৩০ মিনিট' : 'তাৎক্ষণিক';
+      alert(`🎉 অ্যাকশন শুরু করুন: ${item.title}\n\n✅ লক্ষ্য: ${time}\n\n✨ প্রভাব: ${item.dose}\n\nবিবরণ: ${item.desc}`);
+    }
+
+    // Filtering & Event Listeners
+    renderItems(data);
+
+    function applyFilters(){
+      const q = searchInput.value.trim().toLowerCase();
+      const cat = categorySelect.value;
+      const filtered = data.filter(d => 
+        (cat==='all' || d.category===cat) &&
+        (d.title.toLowerCase().includes(q) || d.desc.toLowerCase().includes(q) || d.dose.toLowerCase().includes(q))
+      );
+      renderItems(filtered);
+    }
+    searchInput.addEventListener('input', applyFilters);
+    categorySelect.addEventListener('change', applyFilters);
+
+    shuffleBtn.addEventListener('click', ()=>{
+      const pick = data[Math.floor(Math.random()*data.length)];
+      startMini(pick.id);
+    });
+
+    downloadJSON.addEventListener('click', ()=>{
+      const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'euphoria_boosters.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Theme Toggle Removed (Permanent Dark Mode)
+
+    // Timer Functionality
+    let timerInterval = null;
+    let totalSeconds = 0;
+    const minutesInput = document.getElementById('minutesInput');
+    const startTimer = document.getElementById('startTimer');
+    const stopTimer = document.getElementById('stopTimer');
+    const timerLabel = document.getElementById('timerLabel');
+
+    function formatTime(sec){
+      const m=Math.floor(sec/60); 
+      const s=sec%60; 
+      return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0'); 
+    }
+    
+    stopTimer.disabled = true;
+    timerLabel.textContent = formatTime((parseInt(minutesInput.value)||10)*60);
+
+
+    startTimer.addEventListener('click', ()=>{
+      clearInterval(timerInterval);
+      totalSeconds = (parseInt(minutesInput.value)||10)*60;
+      if (totalSeconds <= 0) {
+        alert("সময় ১ মিনিটের বেশি দিন।");
+        return;
+      }
+      
+      startTimer.disabled = true;
+      stopTimer.disabled = false;
+      timerLabel.style.color = 'var(--primary)';
+
+      timerLabel.textContent = formatTime(totalSeconds);
+      timerInterval = setInterval(()=>{
+        totalSeconds--;
+        timerLabel.textContent = formatTime(totalSeconds);
+        if(totalSeconds<=0){
+          clearInterval(timerInterval); 
+          timerLabel.textContent = '00:00';
+          alert('ট্রেনিং শেষ — ওয়েল ডান! আপনার মুড বুস্ট হয়েছে।');
+          startTimer.disabled = false;
+          stopTimer.disabled = true;
+          // Use a bright alert color
+          timerLabel.style.color = '#ef4444'; 
+        }
+      },1000);
+    });
+
+    stopTimer.addEventListener('click', ()=>{
+      clearInterval(timerInterval);
+      timerLabel.textContent = formatTime(totalSeconds) + ' (Paused)';
+      timerLabel.style.color = 'var(--secondary)';
+      startTimer.disabled = false;
+      stopTimer.disabled = true;
+    });
+
+    minutesInput.addEventListener('input', () => {
+        if (!timerInterval) { // Update display when not running
+            timerLabel.textContent = formatTime((parseInt(minutesInput.value) || 10) * 60);
+        }
+    });
+
+  </script>
+  </center>
+</body>
+</html>
